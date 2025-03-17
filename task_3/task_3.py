@@ -24,17 +24,18 @@ bubble_sort(b)
 
 max = 0
 for i in range(n):
-      max += a[i]*b[i]
+      max += abs(a[i]*b[i])
 
 end_time = time.time()
-memory = tracemalloc.get_traced_memory()
+current, peak = tracemalloc.get_traced_memory()
 tracemalloc.stop()
 #Конец отсчета времени и памяти
 
 with open("task_3/output.txt", "w") as file:
     file.write(f"Максимальный доход: {str(max)}\n")
     file.write(f"Время выполнения: {end_time - start_time:.6f} сек\n")
-    file.write(f"Использование памяти: {memory[1] / 1024:.2f} КБ\n")
+    file.write(f"Использование памяти (текущая): {current / 1024:.6f} КБ\n")
+    file.write(f"Использование памяти (пик): {peak / 1024:.6f} КБ\n")
 
 
 
