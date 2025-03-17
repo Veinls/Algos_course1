@@ -4,7 +4,7 @@ import tracemalloc
 def knapsack(n,w,w_i):
     A =[]
     for _ in range(n + 1):
-        p = [0] * (w + 1)
+        p = [0] * 10
         A.append(p)
     for i in range(n + 1):
         for j in range(w + 1):
