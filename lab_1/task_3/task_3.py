@@ -8,7 +8,7 @@ def bubble_sort(arr):
             if arr[j]<arr[j+1]:
                 arr[j],arr[j+1] = arr[j+1],arr[j]
 
-# Начало отсчета времени и памяти
+
 tracemalloc.start()
 start_time = time.time()
 
@@ -29,7 +29,6 @@ for i in range(n):
 end_time = time.time()
 current, peak = tracemalloc.get_traced_memory()
 tracemalloc.stop()
-#Конец отсчета времени и памяти
 
 with open("task_3/output.txt", "w") as file:
     file.write(f"Максимальный доход: {str(max)}\n")
