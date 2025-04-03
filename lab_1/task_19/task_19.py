@@ -1,3 +1,6 @@
+import time
+import tracemalloc
+
 def matrix(p):
     n = len(p) - 1
     dp = [[0] * n for _ in range(n)]
@@ -22,7 +25,8 @@ def matrix(p):
             return f"({left}{right})"
     return build(0, n - 1)
 
-
+tracemalloc.start()
+start_time = time.time()
 with open('input.txt', 'r') as file:
     lines = file.readlines()
 
@@ -35,6 +39,15 @@ p.append(b)
 
 result = matrix(p)
 
+end_time = time.time()
+execution_time = end_time - start_time
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
 with open('output.txt', 'w') as file:
     file.write(result)
+    file.write(f"\nВремя выполнения: {execution_time:.6f} сек\n")
+    file.write(f"Использование памяти (текущая): {current / 1024:.6f} КБ\n")
+    file.write(f"Использование памяти (пик): {peak / 1024:.6f} КБ\n")
+
 
